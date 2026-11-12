@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Crane Bell Korea</title>
+<meta name="robots" content="noindex">
+<script>
+  // 하위 주소(/ene, /en/riten ...)를 원페이지 섹션으로 연결
+  // github.io 미리보기(/cranebell/)와 자체 도메인(/) 모두 동작
+  var base = location.hostname.slice(-10) === 'github.io' ? '/cranebell/' : '/';
+  var parts = location.pathname.slice(base.length).replace(/\/$/, '').toLowerCase().split('/');
+  var lang = (parts[0] === 'en' || parts[0] === 'ja') ? parts.shift() + '/' : '';
+  var key = parts.join('/');
+  var alias = { 'e-ne':'ene', 'e-ne-bell':'ene', 'ene-bell':'ene', 'ine':'ene',
+                'mini-suzu':'minisuzu', 'mini-suzu-bell':'minisuzu', 'suzu':'minisuzu', 'mini-karen':'minikaren', 'mini-karen-bell':'minikaren', 'karen':'minikaren',
+                'riten-bell':'riten', 'finishes':'finish', 'finish-guide':'finish', 'guide':'finish', 'size':'finish', 'build-match':'build', 'match':'build',
+                'about':'brand', 'contact':'showroom', 'dealer':'dealers', 'lineup':'range' };
+  var map = { brand:1, range:1, ene:1, mini:1, minisuzu:1, minikaren:1, riten:1, finish:1, build:1, showroom:1, dealers:1 };
+  key = alias[key] || key;
+  location.replace(base + lang + (map[key] ? '#' + key : ''));
+</script>
+<style>body{background:#fff}@media (prefers-color-scheme:dark){body{background:#101114}}</style>
+</head>
+<body></body>
+</html>
